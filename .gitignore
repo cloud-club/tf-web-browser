@@ -10,9 +10,12 @@
 .idea/**/vcs.xml
 .idea/**/tasks.xml
 .idea/**/misc.xml
+.idea/**/modules.xml
+.idea/**/web-browser.iml
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
+.idea/**/.gitignore
 
 # AWS User-specific
 .idea/**/aws.xml
