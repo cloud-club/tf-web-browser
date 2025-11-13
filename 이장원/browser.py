@@ -1,8 +1,9 @@
+import sys
 import tkinter
 
-from lex import lex
 from layout import Layout, WIDTH, HEIGHT, HSTEP, VSTEP
 from url import URL
+from parser import HTMLParser, print_tree
 
 SCROLL_STEP = 100
 
@@ -28,8 +29,8 @@ class Browser:
 
     def load(self, url):
         body = url.request()
-        tokens = lex(body)
-        self.display_list = Layout(tokens).display_list
+        self.nodes = HTMLParser(body).parse()
+        self.display_list = Layout(self.nodes).display_list
         self.draw()
 
     def scrolldown(self, e):
@@ -37,6 +38,8 @@ class Browser:
         self.draw()
 
 if __name__ == "__main__":
-    import sys
     Browser().load(URL(sys.argv[1]))
+    body = URL(sys.argv[1]).request()
+    nodes = HTMLParser(body).parse()
+    print_tree(nodes)
     tkinter.mainloop()
