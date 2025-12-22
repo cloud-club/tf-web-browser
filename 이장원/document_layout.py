@@ -1,6 +1,4 @@
-from block_layout import BlockLayout
-
-from block_layout import WIDTH, HEIGHT, HSTEP, VSTEP
+from block_layout import WIDTH, HEIGHT, HSTEP, VSTEP, BlockLayout
 
 class DocumentLayout:
     def __init__(self, node):
