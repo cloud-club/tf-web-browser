@@ -226,15 +226,15 @@ class Layout:
     # ---------------------------
     # 트리 재귀 순회
     # ---------------------------
-    def recurse(self, tree):
-        if isinstance(tree, Text):
-            for word in tree.text.split():
-                self.word(word)
+    def recurse(self, node):
+        if isinstance(node, Text):
+            for word in node.text.split():
+                self.word(node, word)   # node 추가
         else:
-            self.open_tag(tree.tag)
-            for child in tree.children:
+            if node.tag == "br":
+                self.flush()
+            for child in node.children:
                 self.recurse(child)
-            self.close_tag(tree.tag)
 
 
     # ---------------------------
